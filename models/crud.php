@@ -1,21 +1,25 @@
 <?php
 
-require_once "connection.php";
+require_once "conexion.php";
 
-class Datos extends Connection 
+class Datos 
 {
     #REGISTRO DE USUARIOS
     #-------------------------------------------------
     public function userRegisterModel($datos,$table)
     {
-        $stmt = Connection::connect()->prepare("INSERT INTO $table (nombre_usuario, email_usuario, nickname_usuario, password_usuario ,) VALUES (:nombre, :email, :nickname, :password1)");
-        $stmt -> bindParam(":nombre", $datos['nombre'], PDO::PARAM_STR);
-        // $stmt -> bindParam(":apellido", $datos['apellido'], PDO::PARAM_STR);
-        $stmt -> bindParam(":email", $datos['email'], PDO::PARAM_STR);
-        $stmt -> bindParam(":nickname", $datos['nickname'], PDO::PARAM_STR);
-        $stmt -> bindParam(":password1", $datos['password'], PDO::PARAM_STR);
-        // $stmt -> bindParam(":foto", $datos['foto'], PDO::PARAM_STR);
-        $stmt -> bindParam(":genero", $datos['genero']);
+        $con = Connection::getInstancia();
+        $db = $con->getBD();
+        $stmt = $db->prepare("INSERT INTO $table
+        (nombre_usuario, apellido_usuario, email_usuario, nickname_usuario, password_usuario, foto_usuario, genero_usuario) VALUES 
+        (:nombre, :apellido, :email, :nickname, :password1, :foto, :genero)");
+        $stmt->bindParam(":nombre", $datos['nombre'], PDO::PARAM_STR);
+        $stmt->bindParam(":apellido", $datos['apellido'], PDO::PARAM_STR);
+        $stmt->bindParam(":email", $datos['email'], PDO::PARAM_STR);
+        $stmt->bindParam(":nickname", $datos['nickname'], PDO::PARAM_STR);
+        $stmt->bindParam(":password1", $datos['password'], PDO::PARAM_STR);
+        $stmt->bindParam(":foto", $datos['foto'], PDO::PARAM_STR);
+        $stmt->bindParam(":genero", $datos['genero'], PDO::PARAM_STR);
         
         if ($stmt -> execute()) {
             return "success";
@@ -29,12 +33,13 @@ class Datos extends Connection
     public function userLoginModel($datos,$table)
     {
         try{
-            
-            $stmt = Connection::connect()->prepare("SELECT email_usuario, password_usuario FROM $table WHERE email_usuario = :email");
+            $con = Connection::getInstancia();
+            $db = $con->getBD();
+            $stmt = $db->prepare("SELECT email_usuario, password_usuario FROM $table WHERE email_usuario = :email");
             $stmt -> bindParam(":email", $datos['email-login'], PDO::PARAM_STR);
             $stmt -> execute();
             return $stmt -> fetch();
-        // $stmt -> close();
+            $stmt -> close();
         }catch(PDOException $e){
             
             return $e;
@@ -42,9 +47,11 @@ class Datos extends Connection
     }
     #ACTUALIZACION DE USUARIOS
     #-------------------------------------------------
-    public function userUpdatenModel($datos,$table)
+    public function userUpdateFModel($datos,$table)
     {
-        $stmt = Connection::getBD()->prepare("UPDATE $table SET foto = :foto WHERE id = :id");
+        $con = Connection::getInstancia();
+        $db = $con->getBD();
+        $stmt = $db->prepare("UPDATE $table SET foto = :foto WHERE id = :id");
         $stmt -> bindParam(":id", $datos['id'], PDO::PARAM_INT);
         $stmt -> bindParam(":foto", $datos['foto'], PDO::PARAM_STR);
         $stmt -> execute();
@@ -53,6 +60,34 @@ class Datos extends Connection
         }else {
             return "error";
         }
+        $stmt -> close();
+    }
+    #VALIDAR USUARIO EXISTENTE
+    #---------------------------------------------
+    public function validarUsuarioModel($datos,$table)
+    {
+        $con = Connection::getInstancia();
+        $db = $con->getBD();
+        $stmt = $db->prepare("SELECT nickname FROM $table WHERE nickname = :nickname");
+        $stmt -> bindParam(':nickname',$datos,PDO::PARAM_STR);
+        $stmt -> execute();
+
+        return $stmt -> fetch();
+
+        $stmt -> close();
+    }
+     #VALIDAR EMAIL EXISTENTE
+    #---------------------------------------------
+    public function validarEmailModel($datos,$table)
+    {
+        $con = Connection::getInstancia();
+        $db = $con->getBD();
+        $stmt = $db->prepare("SELECT email FROM $table WHERE email = :email");
+        $stmt -> bindParam(':email',$datos,PDO::PARAM_STR);
+        $stmt -> execute();
+
+        return $stmt -> fetch();
+
         $stmt -> close();
     }
 }

@@ -4,8 +4,8 @@
 
   <div class="sessao">
     <h2>SENASoft Cauca 2013</h2>
-    <a href="creartema" id="bt-criartopico" title="Criar um novo t�pico">Crear tema</a>
-    <h3>Descripcio�n del tema Descripcio�n del tema Descripcio�n del tema Descripcio�n del tema</h3>
+    <a href="creartema" id="bt-criartopico" title="Crear un nuevo tema">Crear tema</a>
+    <h3>Descripción del tema</h3>
         
     </div><!-- div sessao -->
 
@@ -13,7 +13,7 @@
     
     	<div class="topico">
         
-        	<div class="opcoes-topico"> 
+forum<div class="opcoes-topico"> 
                 <dl>
                     <dt>5</dt>
                     <dd>Respuestas</dd>
@@ -28,7 +28,7 @@
                 </dl>
            </div><!-- div opcoes-topico -->
             
-        	<h4><a href="respuesta" title="">Nombre del tema<span>/ por Fulano de Tal</span></a></h4>
+        	<h4><a href="forum" title="">Nombre del tema<span>/ por Fulano de Tal</span></a></h4>
             
             
             
@@ -80,7 +80,7 @@
                 </dl>
            </div><!-- div opcoes-topico -->
             
-        	<h4><a href="respuesta" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
+        	<h4><a href="forum" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
             
             
             
@@ -106,7 +106,7 @@
                 </dl>
            </div><!-- div opcoes-topico -->
             
-        	<h4><a href="respuesta" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
+        	<h4><a href="forum" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
             
             
             
@@ -132,7 +132,7 @@
                 </dl>
            </div><!-- div opcoes-topico -->
             
-        	<h4><a href="respuesta" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
+        	<h4><a href="forum" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
             
             
             
@@ -158,7 +158,7 @@
                 </dl>
            </div><!-- div opcoes-topico -->
             
-        	<h4><a href="respuesta" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
+        	<h4><a href="forum" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
             
             
             
@@ -184,7 +184,7 @@
                 </dl>
            </div><!-- div opcoes-topico -->
             
-        	<h4><a href="respuesta" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
+        	<h4><a href="forum" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
             
             
             
@@ -210,7 +210,7 @@
                 </dl>
            </div><!-- div opcoes-topico -->
             
-        	<h4><a href="respuesta" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
+        	<h4><a href="forum" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
             
             
             
@@ -236,7 +236,7 @@
                 </dl>
            </div><!-- div opcoes-topico -->
             
-        	<h4><a href="respuesta" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
+        	<h4><a href="forum" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
             
             
             
@@ -262,7 +262,7 @@
                 </dl>
            </div><!-- div opcoes-topico -->
             
-        	<h4><a href="respuesta" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
+        	<h4><a href="forum" title="">Nombre del tema <span>/ por Fulano de Tal</span></a></h4>
             
             
             

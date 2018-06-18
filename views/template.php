@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="views/css/estilos.css" type="text/css" rel="stylesheet" />
-    <script src="views/js/jquery.js" type="text/javascript"></script>
-    <script src="views/js/inicio.js" type="text/javascript"></script>
     <title>SENASoft Cauca 2013 | Foro de debate</title>
 </head>
 <body>
@@ -16,5 +14,8 @@
         $ruta -> rutasController();
     ?>
     <footer><?php include "modules/copyright.php";?></footer>
+    <script src="views/js/jquery.js" type="text/javascript"></script>
+    <script src="views/js/inicio.js" type="text/javascript"></script>
+    <script src="views/js/validarRegistro.js" type="text/javascript"></script>
 </body>
 </html>

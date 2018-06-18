@@ -4,7 +4,7 @@ class Ruta
 {
     public function pageModel($url)
     {
-        if ($url == "creartema" || $url == "login_registro" || $url == "respuesta") {
+        if ($url == "creartema" || $url == "login_registro" || $url == "forum") {
             $module = "views/modules/" . $url . ".php";
         }
         elseif ($url == "index") {

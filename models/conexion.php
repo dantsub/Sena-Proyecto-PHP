@@ -8,14 +8,15 @@ require_once "config.php";
 
 class Connection{
 	//Declaracion de variables
-private $conexion = null;
-private $pdo; // Variable de conexion por PDO
+private static $conexion = null;
+private static $pdo; // Variable de conexion por PDO
 	
 final private function __construct(){
 	try{
 		self::getBD();
 	}catch(PDOException $e){
-		
+		echo "<pre>";
+		var_dump($e);
 	}
 }
 	
