@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	
 	var userBe = false;
 	var emailBe = false;
 	var captchaBe = false;
@@ -21,17 +21,16 @@ $(document).ready(function() {
 			success: function (respuesta) {
 				console.log(respuesta);
 				if (respuesta == 0) {
-					//accion para que el usuario sepa que el nickname ya existe
+					//accion para que el usuario sepa que el email ya existe
 					$("input#nickname").css({
 						border: '2px solid red'
 					});
-					// $("label[for='nickname'] > span").html("<p style='color:red;'>Ese nickname ya existe</p>")
+					$("label[for='nickname'] > span").html("<p style='color:red;'>Ese nickname ya existe</p>");
 					userBe = true;
 				}else{
 					//puede ser que el input se vuelva de color verde
-					$("input#nickname").css({
-						border: '2px solid green'
-					});
+					$("input#nickname").css({ border: '2px solid #819FD3'});
+					$("label[for='nickname'] > span").html("");
 					var userBe = false;
 				}
 			} 
@@ -55,6 +54,7 @@ $(document).ready(function() {
 	$("#email").change(function() {
 
 		var email = $("#email").val();
+		// console.log(email);
 		var datos = new FormData();
 		datos.append('validarEmail', email);
 		$.ajax({
@@ -67,10 +67,13 @@ $(document).ready(function() {
 			success: function (respuesta) {
 				console.log(respuesta);	
 				if (respuesta == 0) {
-					//accion para que el usuario sepa que el email ya existe
+					$("input#email").css({ border: '2px solid red'});
+					$("label[for='email'] > span").html("<p style='color:red;'>Ese email ya esta registrado</p>");
 					var emailBe = true;
 				}else{
 					//puede ser que el input se vuelva de color verde
+					$("input#email").css({ border: '2px solid #819FD3'});
+					$("label[for='email'] > span").html("");
 					var emailBe = false;
 				}
 			} 
@@ -107,11 +110,12 @@ $(document).ready(function() {
 				console.log(respuesta);
 				if (respuesta == 0) {
 					//accion para el captcha valido
-					var captchaBe = true;
+					$("label[for='cad-cod1'] > span").html("");
+					var captchaBe = false;
 				}else{
 					//Captcha invalido, recargar captcha y no dejar enviar formulario
-					$("#cad-cod").html("<p>Captchar Incorrecto</p>");
-					var captchaBe = false;
+					$("label[for='cad-cod1'] > span").html("<p style='color:red;'>Captchar Incorrecto</p>");
+					var captchaBe = true;
 				}
 			} 
 		})
@@ -164,30 +168,31 @@ $(document).ready(function() {
 			var expresion = /^[a-zA-Z0-9]*$/;
 
 			if (caracteres < 8) {
-				$("label[for='password'] span").html("<p>Escriba mínimo 8 caracteres por favor</p>");
+				$("label[for='password'] > span").html("<p>Escriba mínimo 8 caracteres por favor</p>");
 				return false;
 			}
 			if (!expresion.test(password)) {
-				$("label[for='password'] span").html("<p>No escriba caracteres especiales por favor</p>");
+				$("label[for='password'] > span").html("<p>No escriba caracteres especiales por favor</p>");
 				return false;
 			}
 		}
 		/*=== Validar email ===*/
 		if (email != "") {
 			// var caracteres = email.length;
-			var expresion = /^\w+([\.-]?\w+)*@\w+([\.-]?w+)*(\.\w{2,4})+$/;
+			var expresion = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
 			if (!expresion.test(email)) {
-				$("label[for='email'] span").html("<p>Escriba correctamente el Email</p>");
+				$("label[for='email'] > span").html("<p>Escriba correctamente el Email</p>");
 				return false;
 			}
 			if (emailBe) {
-				$("label[for='email'] span").html("<p>Este email ya esta registrado.</p>");
+				$("label[for='email'] > span").html("<p>Este email ya esta registrado.</p>");
 				return false;
 			}
 		}
 		if (captcha !='') {
-			if (!captchaBe) {
+			if (captchaBe) {
+				$("label[for='cad-cod1'] > span").html("<p style='color:red;'>Captchar Incorrecto</p>");
 				return false;
 			}
 		}

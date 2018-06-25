@@ -115,7 +115,7 @@ class MvcController
     {
         $datos_c = $valEmail;
         $answer = Datos::validarEmailModel($datos_c, "usuario");
-        print_r($answer);
+        // print_r($answer);
         if (isset($answer["email_usuario"])) {
             echo 0;
         }else{

@@ -96,7 +96,7 @@
                 <div>
                   <img id="captcha" src="views/modules/captcha.php" alt="">
                 </div>  
-                <span><label for="cod-cad">Ingrese el código de arriba <span></span></label></span>
+                <span><label for="cod-cad1">Ingrese el código de arriba <span></span></label></span>
                 <input type="text" name="cod-cad" id="cod-cad" required />
               </td>
             </tr>            

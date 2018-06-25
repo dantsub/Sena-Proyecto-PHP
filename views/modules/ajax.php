@@ -16,7 +16,7 @@ class Ajax
         $answer = mvcController::validarUsuarioController($datos);
         echo $answer;
     }
-
+    
     public function emailAjax()
     {
         $datos = $this->email;
@@ -42,5 +42,12 @@ if (isset($_POST["validarEmail"])) {
 	$b->email = $_POST["validarEmail"];
 	$b->emailAjax();	
 }
+#============== EMAIL ================#
+if (isset($_POST["validarCaptcha"])) {
+    $c = new Ajax();
+    $c->captcha = $_POST["validarCaptcha"];
+    $c->captchaAjax();    
+}
+
 
 
