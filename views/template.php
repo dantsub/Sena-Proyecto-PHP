@@ -14,7 +14,7 @@
         $ruta -> rutasController();
     ?>
     <footer><?php include "modules/copyright.php";?></footer>
-    <script src="views/js/jquery.js" type="text/javascript"></script>
+    <script src="views/js/jquery.min.js" type="text/javascript"></script>
     <script src="views/js/inicio.js" type="text/javascript"></script>
     <script src="views/js/validarRegistro.js" type="text/javascript"></script>
 </body>

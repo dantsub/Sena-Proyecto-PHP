@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 class MvcController
 {
@@ -57,6 +57,7 @@ class MvcController
     #---------------------------------------------
     public function userLoginController()
     {
+
         if($_SERVER['REQUEST_METHOD']=='POST'){
             if (isset($_POST['email-login'])) {
                 # code...
@@ -64,16 +65,17 @@ class MvcController
                                 'password-login' => md5($_POST['password-login']));
 
                 $answer = Datos::userLoginModel($datos_c, "usuario");
-
+                                
                 if ($answer['email_usuario'] == $_POST['email-login'] && $answer['password_usuario'] == md5($_POST['password-login'])) {
-                    
-                      
+                    session_start();    
+                    $user=$answer['nickname_usuario'];
+                    $_SESSION['user'] = $user;
                     $_SESSION['login'] = true;
                     
-                    header('Location: index.php');
+                    header('Location: index');
 
                 }else {
-                    
+                    // $_SESSION['login'] = false;
                     header('Location: error');
 
                 }
@@ -101,7 +103,7 @@ class MvcController
     {
         $datos_c = $valUsurio;
         $answer = Datos::validarUsuarioModel($datos_c, "usuario");
-        if (count($answer["nickname"]) > 0) {
+        if (isset($answer['nickname_usuario'])) {
             echo 0;
         }else{
             echo 1;
@@ -113,7 +115,8 @@ class MvcController
     {
         $datos_c = $valEmail;
         $answer = Datos::validarEmailModel($datos_c, "usuario");
-        if (count($answer["email"]) > 0) {
+        print_r($answer);
+        if (isset($answer["email_usuario"])) {
             echo 0;
         }else{
             echo 1;
@@ -127,7 +130,7 @@ class MvcController
             echo 0;
         }else{
             echo 1;
-        }
+        } 
     }
 }
 

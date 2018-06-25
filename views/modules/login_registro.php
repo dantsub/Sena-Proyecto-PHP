@@ -1,22 +1,27 @@
 
 <?php
+// session_start();
+// if(isset($_SESSION['login'])){
+//     $_SESSION['login'] = false;
+// }
+  $register = new MvcController();
+  $register -> userRegisterController();
 
-$register = new MvcController();
-$register -> userRegisterController();
+  $login = new MvcController();
+  $login -> userLoginController();
 
-$login = new MvcController();
-$login -> userLoginController();
-
-if (isset($_GET['action'])) {
-  
-  if ($_GET['action'] == "ok") {
-    //echo "Registro exitoso";
+  if (isset($_GET['action'])) {
+    
+    if ($_GET['action'] == "ok") {
+      //echo "Registro exitoso";
+    }
+    
+    if ($_GET['action'] == "error") {
+      //echo "Correo no registrado";
+    }
   }
-  
-  if ($_GET['action'] == "error") {
-    //echo "Correo no registrado";
-  }
-}
+
+
 
 ?>
 <div id="bgcinza"></div><!-- bgcinza -->
@@ -33,7 +38,7 @@ if (isset($_GET['action'])) {
     	<h3>Entrar</h3>
         <span>¿Ya estás registrado? Entonces accede con tu email y contraseña!</span>
     
-    	<form method="post" onsubmit="return validarRegistro()">
+    	<form method="post">
         	<table>
             <tr>
               <td><label for="email-login">E-Mail:</label></td>
@@ -54,7 +59,7 @@ if (isset($_GET['action'])) {
     <div class="col-direita">
     	<h3>Registrarse</h3>
         <span>¿Aún no tienes una cuenta? hacer tu registro ahora, fácil y rápido!</span>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" onsubmit="return validarRegistro()">
             <table>
             <tr>
               <td><label for="nombre">Primer nombre<span></span></label></td>
@@ -65,16 +70,16 @@ if (isset($_GET['action'])) {
               <td><input name="apellido" placeholder="Escriba su apellido" id="apellido" type="text" required /></td>
             </tr> 
             <tr>
-              <td><label for="nickname">Nickname:<span></span></label></td>
+              <td><label for="nickname">Nickname: <span></span></label></td>
               <td><input type="text" placeholder=" Escriba su nickname" name="nickname" id="nickname" required /></td>
             </tr>
             <tr>
               <td><label for="email">E-Mail:<span></span></label></td>
-              <td><input type="email" placeholder=" Escriba su correo electrónico" name="email" id="email-cad" required /></td>
+              <td><input type="email" placeholder=" Escriba su correo electrónico" name="email" id="email" required /></td>
             </tr>
             <tr>
-              <td><label for="contrasena-cad">Contraseña:<span></span></label></td>
-              <td><input type="password" placeholder=" Mínimo 8 caracteres" name="password" id="contrasena-cad" required /></td>
+              <td><label for="password">Contraseña:<span></span></label></td>
+              <td><input type="password" minlength="8" placeholder=" Mínimo 8 caracteres" name="password" id="password" required /></td>
             </tr>
             <tr>
             	<td>Sexo</td>

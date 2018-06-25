@@ -1,3 +1,7 @@
+<?php
+
+
+?>
 <div id="responder">
 	<form method="post" action="">
         <table>

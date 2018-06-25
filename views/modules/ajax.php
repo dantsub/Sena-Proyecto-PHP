@@ -1,5 +1,5 @@
 <?php 
-
+ 
 require_once '../../controllers/controller.php';
 require_once '../../models/crud.php';
 
@@ -12,20 +12,20 @@ class Ajax
 
     public function usuarioAjax()
     {
-        $datos = $this -> usuario;
+        $datos = $this->usuario;
         $answer = mvcController::validarUsuarioController($datos);
         echo $answer;
     }
 
     public function emailAjax()
     {
-        $datos = $this -> email;
+        $datos = $this->email;
         $answer = mvcController::validarEmailController($datos);
         echo $answer;
     }
     public function captchaAjax()
     {
-        $datos = $this -> captcha;
+        $datos = $this->captcha;
         $answer = mvcController::validarCaptchaController($datos);
         echo $answer;
     }
@@ -33,14 +33,14 @@ class Ajax
 #============== NICKNAME ================#
 if (isset($_POST["validarUsuario"])) {
 	$a = new Ajax();
-	$a -> usuario = $_POST["validarUsuario"];
-	$a -> usuarioAjax();
+	$a->usuario = $_POST["validarUsuario"];
+	$a->usuarioAjax();
 }
 #============== EMAIL ================#
 if (isset($_POST["validarEmail"])) {
 	$b = new Ajax();
-	$b -> email = $_POST["validarEmail"];
-	$b -> emailAjax();	
+	$b->email = $_POST["validarEmail"];
+	$b->emailAjax();	
 }
 
 

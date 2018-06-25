@@ -1,9 +1,9 @@
 <?php
 // session_start();
-if (!$_SESSION['login']) {
-  header('Location:login_registro');
-  exit();
-}
+// if (!$_SESSION['login']) {
+//   header('Location:login_registro');
+//   exit();
+// }
 ?>
 
 <div id="bgcinza"></div><!-- bgcinza -->

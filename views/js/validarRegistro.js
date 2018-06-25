@@ -9,22 +9,29 @@ $(document).ready(function() {
 	$("#nickname").change(function() {
 
 		var usuario = $("#nickname").val();
-		var datos = FormData();
+		var datos = new FormData();
 		datos.append('validarUsuario', usuario);
 		$.ajax({
 			url: 'views/modules/ajax.php',
-			type: 'POST',
+			method: 'POST',
 			data: datos,
 			cache: false,
 			contentType: false,
 			processData: false,
 			success: function (respuesta) {
+				console.log(respuesta);
 				if (respuesta == 0) {
 					//accion para que el usuario sepa que el nickname ya existe
-					$("label[for='nickname'] span").html("<p>Escriba menos de 11 caracteres por favor</p>")
-					var userBe = true;
+					$("input#nickname").css({
+						border: '2px solid red'
+					});
+					// $("label[for='nickname'] > span").html("<p style='color:red;'>Ese nickname ya existe</p>")
+					userBe = true;
 				}else{
 					//puede ser que el input se vuelva de color verde
+					$("input#nickname").css({
+						border: '2px solid green'
+					});
 					var userBe = false;
 				}
 			} 
@@ -48,16 +55,17 @@ $(document).ready(function() {
 	$("#email").change(function() {
 
 		var email = $("#email").val();
-		var datos = FormData();
+		var datos = new FormData();
 		datos.append('validarEmail', email);
 		$.ajax({
 			url: 'views/modules/ajax.php',
-			type: 'POST',
+			method: 'POST',
 			data: datos,
 			cache: false,
 			contentType: false,
 			processData: false,
 			success: function (respuesta) {
+				console.log(respuesta);	
 				if (respuesta == 0) {
 					//accion para que el usuario sepa que el email ya existe
 					var emailBe = true;
@@ -80,28 +88,29 @@ $(document).ready(function() {
 	});
 	/*==VALIDAR EMAIL EXISTENTE AJAX==*/
 
-/*================================
-	VALIDAR CAPTCHA AJAX
+	/*================================
+		VALIDAR CAPTCHA AJAX
 	==================================*/
 	$("#btn-submit").submit(function() {
 
 		var captcha = $("#cod-cad").val();
-		var datos = FormData();
+		var datos = new FormData();
 		datos.append('validarCaptcha', captcha);
 		$.ajax({
 			url: 'views/modules/ajax.php',
-			type: 'POST',
+			method: 'POST',
 			data: datos,
 			cache: false,
 			contentType: false,
 			processData: false,
 			success: function (respuesta) {
+				console.log(respuesta);
 				if (respuesta == 0) {
 					//accion para el captcha valido
 					var captchaBe = true;
 				}else{
 					//Captcha invalido, recargar captcha y no dejar enviar formulario
-					$("#captcha").html("<p>Captchar Incorrecto</p>");
+					$("#cad-cod").html("<p>Captchar Incorrecto</p>");
 					var captchaBe = false;
 				}
 			} 
@@ -122,26 +131,30 @@ $(document).ready(function() {
 	/*================================
 			VALIDAR REGISTRO
 	==================================*/
+	
 	function validarRegistro() {
 		var nickname = $("#nickname").val();
 		var password = $("#password").val();
 		var email = $("#email").val();
+		var captcha = $("#cod-cad").val()
+		// console.log(validarRegistro());
+		console.log(email);
 
 	/*=== Validar usuario ===*/
-		if (usuario != "") {
-			var caracteres = usuario.length;
+		if (nickname != "") {
+			var caracteres = nickname.length;
 			var expresion = /^[a-zA-Z0-9]*$/;
 
 			if (caracteres > 11) {
-				$("label[for='nickname'] span").html("<p>Escriba menos de 11 caracteres por favor</p>");
+				$("label[for='nickname'] > span").html("<p>Escriba menos de 11 caracteres por favor</p>");
 				return false;
 			}
-			if (!expresion.test(usuario)) {
-				$("label[for='nickname'] span").html("<p>No escriba caracteres especiales</p>");
+			if (!expresion.test(nickname)) {
+				$("label[for='nickname'] > span").html("<p>No escriba caracteres especiales</p>");
 				return false;
 			}
 			if (userBe) {
-				$("label[for='nickname'] span").html("<p>Este usuario ya existe</p>");
+				$("label[for='nickname'] > span").html("<p style='color:red;'>Este usuario ya existe</p>");
 				return false;
 			}
 		}
@@ -151,11 +164,11 @@ $(document).ready(function() {
 			var expresion = /^[a-zA-Z0-9]*$/;
 
 			if (caracteres < 8) {
-				$("label[for='contrasena-cad'] span").html("<p>Escriba mínimo 8 caracteres por favor</p>");
+				$("label[for='password'] span").html("<p>Escriba mínimo 8 caracteres por favor</p>");
 				return false;
 			}
 			if (!expresion.test(password)) {
-				$("label[for='contrasena-cad'] span").html("<p>No escriba caracteres especiales por favor</p>");
+				$("label[for='password'] span").html("<p>No escriba caracteres especiales por favor</p>");
 				return false;
 			}
 		}
@@ -173,6 +186,12 @@ $(document).ready(function() {
 				return false;
 			}
 		}
+		if (captcha !='') {
+			if (!captchaBe) {
+				return false;
+			}
+		}
 		return true;
 	}
+	console.log(validarRegistro());	
 });

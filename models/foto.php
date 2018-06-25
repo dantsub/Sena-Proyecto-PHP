@@ -21,10 +21,7 @@ class Foto
 			}else{
 				echo 'El formato y/o el tamaño es mayor a 3MB';
 			}
-		}else{
-			echo "hola";
-		}
-		
+		}		
 	}
 
 }

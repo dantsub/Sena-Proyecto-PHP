@@ -35,7 +35,7 @@ class Datos
         try{
             $con = Connection::getInstancia();
             $db = $con->getBD();
-            $stmt = $db->prepare("SELECT email_usuario, password_usuario FROM $table WHERE email_usuario = :email");
+            $stmt = $db->prepare("SELECT email_usuario, password_usuario, nickname_usuario FROM $table WHERE email_usuario = :email");
             $stmt -> bindParam(":email", $datos['email-login'], PDO::PARAM_STR);
             $stmt -> execute();
             return $stmt -> fetch();
@@ -68,7 +68,7 @@ class Datos
     {
         $con = Connection::getInstancia();
         $db = $con->getBD();
-        $stmt = $db->prepare("SELECT nickname FROM $table WHERE nickname = :nickname");
+        $stmt = $db->prepare("SELECT nickname_usuario FROM $table WHERE nickname_usuario = :nickname");
         $stmt -> bindParam(':nickname',$datos,PDO::PARAM_STR);
         $stmt -> execute();
 
@@ -82,7 +82,7 @@ class Datos
     {
         $con = Connection::getInstancia();
         $db = $con->getBD();
-        $stmt = $db->prepare("SELECT email FROM $table WHERE email = :email");
+        $stmt = $db->prepare("SELECT email_usuario FROM $table WHERE email_usuario = :email");
         $stmt -> bindParam(':email',$datos,PDO::PARAM_STR);
         $stmt -> execute();
 
