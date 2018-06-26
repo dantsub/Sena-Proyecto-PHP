@@ -1,25 +1,31 @@
 
 <?php
-// session_start();
-// if(isset($_SESSION['login'])){
-//     $_SESSION['login'] = false;
-// }
-  $register = new MvcController();
-  $register -> userRegisterController();
 
-  $login = new MvcController();
-  $login -> userLoginController();
+if(isset($_SESSION['login'])){
+    // session_start();
+    $_SESSION['login'] = false;
+    session_destroy();
+    header('Location: login_registro');
+}
+  
+if (!isset($_SESSION['login'])) {
+    // session_start();
+    $login = new MvcController();
+    $login -> userLoginController();
+}
+    $register = new MvcController();
+    $register -> userRegisterController();
 
-  if (isset($_GET['action'])) {
+  // if (isset($_GET['action'])) {
     
-    if ($_GET['action'] == "ok") {
-      //echo "Registro exitoso";
-    }
+  //   if ($_GET['action'] == "ok") {
+  //     //echo "Registro exitoso";
+  //   }
     
-    if ($_GET['action'] == "error") {
-      //echo "Correo no registrado";
-    }
-  }
+  //   if ($_GET['action'] == "error") {
+  //     //echo "Correo no registrado";
+  //   }
+  // }
 
 
 
