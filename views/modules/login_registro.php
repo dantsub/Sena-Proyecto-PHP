@@ -16,19 +16,6 @@ if (!isset($_SESSION['login'])) {
     $register = new MvcController();
     $register -> userRegisterController();
 
-  // if (isset($_GET['action'])) {
-    
-  //   if ($_GET['action'] == "ok") {
-  //     //echo "Registro exitoso";
-  //   }
-    
-  //   if ($_GET['action'] == "error") {
-  //     //echo "Correo no registrado";
-  //   }
-  // }
-
-
-
 ?>
 <div id="bgcinza"></div><!-- bgcinza -->
 
@@ -89,7 +76,7 @@ if (!isset($_SESSION['login'])) {
             </tr>
             <tr>
             	<td>Sexo</td>
-                <td><label><input type="radio" name="sexo" id="sexo" value="M" /> M </label>&nbsp;&nbsp;&nbsp;<label><input type="radio" name="sexo" id="sexo" value="F" /> F </label></td>
+                <td><label><input type="radio" name="sexo" id="sexo" value="Masculino" /> M </label>&nbsp;&nbsp;&nbsp;<label><input type="radio" name="sexo" id="sexo" value="Femenino" /> F </label></td>
             </tr>
             <tr>
               <td><label for="foto-cad">Foto para avatar</label></td>

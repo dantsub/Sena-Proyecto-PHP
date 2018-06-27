@@ -45,23 +45,6 @@ class Datos
             return $e;
         }
     }
-    #ACTUALIZACION DE USUARIOS
-    #-------------------------------------------------
-    public function userUpdateFModel($datos,$table)
-    {
-        $con = Connection::getInstancia();
-        $db = $con->getBD();
-        $stmt = $db->prepare("UPDATE $table SET foto = :foto WHERE id = :id");
-        $stmt -> bindParam(":id", $datos['id'], PDO::PARAM_INT);
-        $stmt -> bindParam(":foto", $datos['foto'], PDO::PARAM_STR);
-        $stmt -> execute();
-        if ($stmt -> execute()) {
-            return "success";
-        }else {
-            return "error";
-        }
-        $stmt -> close();
-    }
     #VALIDAR USUARIO EXISTENTE
     #---------------------------------------------
     public function validarUsuarioModel($datos,$table)

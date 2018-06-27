@@ -1,7 +1,5 @@
 <?php
 
-
-
 class MvcController
 {
     #Mostrar Plantilla
@@ -75,28 +73,14 @@ class MvcController
                     header('Location: index');
 
                 }else {
-                    // $_SESSION['login'] = false;
+                    
                     header('Location: error');
 
                 }
             }  
         }              
     }
-    #ACTUALIZACION DE USUARIO
-    #---------------------------------------------
-   /* public function userUpdateFController()
-    {
-        $datos_c = "";
-        $answer = Datos::userUpdateModel($datos_c, "usuario");
-        if ($answer == "success") {
-            header("Location:index");
-        }else {
-            echo "error";
-        }
-
-    }*/
-    #INGRESAR 
-    #---------------------------------------------
+    
     #VALIDAR USUARIO EXISTENTE
     #---------------------------------------------
     public function validarUsuarioController($valUsurio)
