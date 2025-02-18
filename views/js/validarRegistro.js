@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 	
 	var userBe = false;
 	var emailBe = false;
