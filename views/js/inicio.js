@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 	
 	$(function () {
 	    $("#lista-topicos .topico:odd").css('background-color', '#E9E9E9');
